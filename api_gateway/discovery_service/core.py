@@ -2,12 +2,12 @@ import json
 from os import name
 from fastapi import Request
 from redis import Redis
-from api_gateway.discovery_service.schemas import (
+from discovery_service.schemas import (
     RedisServiceInstanceSchema,
     RedisServiceSchema,
     ServiceInSchema,
 )
-from api_gateway.settings import get_settings
+from settings import get_settings
 
 settings = get_settings()
 

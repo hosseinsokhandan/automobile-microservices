@@ -1,9 +1,9 @@
 from fastapi import FastAPI
 
-from api_gateway.automobile_service.api import router as automobile_router
-from api_gateway.part_service.api import router as part_router
-from api_gateway.file_service.api import router as file_router
-from api_gateway.discovery_service.api import router as discovery_router
+from automobile_service.api import router as automobile_router
+from part_service.api import router as part_router
+from file_service.api import router as file_router
+from discovery_service.api import router as discovery_router
 
 app = FastAPI()
 

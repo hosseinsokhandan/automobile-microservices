@@ -1,4 +1,4 @@
-from api_gateway.discovery_service.core import registery_service
+from discovery_service.core import registery_service
 
 
 def get_service_address(service_name: str):

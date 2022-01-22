@@ -1,8 +1,8 @@
 from typing import Optional
 from fastapi import APIRouter, HTTPException, Request
-from api_gateway.discovery_service.core import registery_service
-from api_gateway.discovery_service.models import ServiceInSchema
-from api_gateway.discovery_service.schemas import RedisServiceSchema
+from discovery_service.core import registery_service
+from discovery_service.models import ServiceInSchema
+from discovery_service.schemas import RedisServiceSchema
 
 router = APIRouter()
 

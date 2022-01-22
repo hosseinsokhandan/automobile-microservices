@@ -1,7 +1,9 @@
 version: '3.8'
 
 services:
-  api-gateway:
+  apigateway:
+    container_name: apigateway-app
+    hostname: apigateway
     build: 
       context: .
       dockerfile: Dockerfile.dev
@@ -12,6 +14,8 @@ services:
       - "0.0.0.0:8000:8000"
     depends_on:
       - redis
+    networks:
+      api_gateway: {}
 
   redis:
     image: docker.io/bitnami/redis:6.2
@@ -24,7 +28,14 @@ services:
       - '6379:6379'
     volumes:
       - 'redis_data:/bitnami/redis/data'
+    networks:
+      api_gateway: {}
 
 volumes:
   redis_data:
     driver: local
+
+networks:
+  api_gateway:
+    external: false
+    name: api_gateway
