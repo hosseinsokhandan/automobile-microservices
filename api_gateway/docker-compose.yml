@@ -1,0 +1,30 @@
+version: '3.8'
+
+services:
+  api-gateway:
+    build: 
+      context: .
+      dockerfile: Dockerfile.dev
+    command: uvicorn main:app --reload --host 0.0.0.0
+    volumes:
+      - .:/app
+    ports:
+      - "0.0.0.0:8000:8000"
+    depends_on:
+      - redis
+
+  redis:
+    image: docker.io/bitnami/redis:6.2
+    container_name: apigateway-redis
+    environment:
+      # ALLOW_EMPTY_PASSWORD is recommended only for development.
+      - ALLOW_EMPTY_PASSWORD=yes
+      - REDIS_DISABLE_COMMANDS=FLUSHDB,FLUSHALL
+    ports:
+      - '6379:6379'
+    volumes:
+      - 'redis_data:/bitnami/redis/data'
+
+volumes:
+  redis_data:
+    driver: local
